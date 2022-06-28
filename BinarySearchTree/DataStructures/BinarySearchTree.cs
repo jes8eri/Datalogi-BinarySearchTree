@@ -21,12 +21,20 @@
         /// <returns> The amount of non null recursive calls that have been added up. </returns>
         private int CountRecursively(Node<T>? node) => node == null ? 0 : CountRecursively(node.LeftChild) + CountRecursively(node.RightChild) + 1;
 
-        public bool Exists(T value)
-        {
-            // If root.data is != value, check next left node value, if left node value > value, go right
-            return ExistsRecursively(Root, value);
-        }
+        /// <summary>
+        /// Calls the recursive method for finding a specific value.
+        /// </summary>
+        /// <param name="value">The value to be found.</param>
+        /// <returns>True if the value is found, false if it is not.</returns>
+        public bool Exists(T value) => ExistsRecursively(Root, value);
 
+        /// <summary>
+        /// Goes through all the nodes recursively looking for the specified value.
+        /// <para/> Searches the left side and compares the data to the value, if found, return true. If not found, check the right side of the tree.
+        /// </summary>
+        /// <param name="node">The current node.</param>
+        /// <param name="value">The value to be found.</param>
+        /// <returns>True if the value exists in either the left or right side of the tree.</returns>
         private bool ExistsRecursively(Node<T>? node, T value)
         {
             if (node == null) return false;
