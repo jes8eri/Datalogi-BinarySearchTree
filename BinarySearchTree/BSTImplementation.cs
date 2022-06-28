@@ -5,9 +5,6 @@
     using Helpers;
     public static class BSTImplementation
     {
-        /// <summary>
-        /// Runs this instance.
-        /// </summary>
         public static void Run()
         {
             DisplayHelper.SetColours();
@@ -27,12 +24,17 @@
             PrintBSTNumbers(bstInsertValues);
 
             CheckIfContainsRandNumbers(bst, randomArray);
+
+            AskIfRedrawRandomNumbers();
         }
 
         private static void PrintBinarySearchTree(BinarySearchTree<int> bst)
         {
+            Console.WriteLine("────────────────────────────────────────────────────────");
+            Console.WriteLine("Visual representation of the BinarySearchTree:");
             bst.Print();
             Console.WriteLine($"\nTotal amount of unique values in the BinarySearchTree: {bst.Count()}");
+            Console.WriteLine("────────────────────────────────────────────────────────");
         }
 
         private static int[] PopulateRandomArray(int randArrayCount = 10)
@@ -51,6 +53,7 @@
         private static void PrintBSTNumbers(int[] preDefinedArray)
         {
             Array.Sort(preDefinedArray);
+
             Console.WriteLine("\nBinarySearchTree should contain the following numbers: ");
             for (int i = 0; i < preDefinedArray.Length; i++)
             {
@@ -69,11 +72,24 @@
 
         private static void CheckIfContainsRandNumbers(BinarySearchTree<int> bst, int[] array)
         {
+            Array.Sort(array);
             Console.WriteLine("\nDoes any of the following random numbers exist in the BinarySearchTree?");
             for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine($"#{array[i]} - " + (bst.Exists(array[i]) ? "Yes" : "No"));
             }
+        }
+
+        private static void AskIfRedrawRandomNumbers()
+        {
+            Console.WriteLine("\nPress [1] for new random numbers. Any other key to exit.");
+            ConsoleKeyInfo input = Console.ReadKey(true);
+            if (input.KeyChar == '1')
+            {
+                Console.Clear();
+                StartBSTConsole();
+            }
+   
         }
     }
 }

@@ -6,7 +6,7 @@
 
     public class BinarySearchTree<T> : IBST_G<T> where T : IComparable<T>
     {
-        private Node<T>? Root = null;
+        private Node<T>? Root;
 
         /// <summary>
         /// Calls the recursive method for counting non null nodes.
@@ -48,9 +48,6 @@
         /// <param name="value">The value to be inserted.</param>
         public void Insert(T value)
         {
-            // Find empty node to get inserted into
-            // If found a non empty node, if value > data, go right. if value < data, go left.
-
             Node<T>? insertNode = new(value);
 
             if (Root == null) Root = insertNode;
