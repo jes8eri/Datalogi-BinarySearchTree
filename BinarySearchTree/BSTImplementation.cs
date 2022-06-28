@@ -1,15 +1,13 @@
 ﻿namespace BinarySearchTree
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using DataStructures;
 
     public static class BSTImplementation
     {
-
+        /// <summary>
+        /// Runs this instance.
+        /// </summary>
         public static void Run()
         {
             var BST = new BinarySearchTree<int>();
@@ -26,6 +24,5 @@
             BST.Print();
             Console.WriteLine(BST.Count());
         }
-
     }
 }

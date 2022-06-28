@@ -8,7 +8,6 @@
 
     public interface IBST_G<T> where T : IComparable<T>
     {
-
         // Remember: the most efficient tree is a balanced tree. A balanced tree has the same (or as close as possible to) amount of nodes on the left as on the right.
 
         // Inserts a new value to the tree
@@ -20,6 +19,5 @@
 
         // Returns the number of objects currently in the tree
         public int Count();
-
     }
 }

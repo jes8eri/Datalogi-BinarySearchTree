@@ -8,7 +8,6 @@
 
     public interface IBST_VG<T> where T : IComparable<T>
     {
-
         // Remove a value from the tree
         public void Remove(T value);
 
