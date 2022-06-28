@@ -19,13 +19,22 @@ using System.Xml.Linq;
     {
         private Node<T>? Root = null;
 
-        public int Count()
+        public int Count() => CountRecursively(Root);
+
+        // Goes through every left child and every right child, adds 1 when the node isnt null
+        private int CountRecursively(Node<T>? node)
         {
+         
+            // Basfall
+            if (node == null) return 0;
 
-
-
-            throw new NotImplementedException();
+            // Annars kör rekursionsfall
+            int leftCount = CountRecursively(node.LeftChild);
+            int rightCount = CountRecursively(node.RightChild);
+            
+            return rightCount + leftCount + 1; // Add 1 for each recursive call
         }
+
         public bool Exists(T value)
         {
             // If root.data is != value, check next left node value, if left node value > value, go right
@@ -39,24 +48,19 @@ using System.Xml.Linq;
             // If found a non empty node, if value > data, go right. if value < data, go left.
 
             Node<T>? insertNode = new(value);
+
             if (Root == null) Root = insertNode;
-
-            Root = InsertRecursively(Root, insertNode);
-
-
+                Root = InsertRecursively(Root, insertNode);
         }
 
-        public Node<T> InsertRecursively(Node<T>? parentNode, Node<T> insertNode)
+        private Node<T> InsertRecursively(Node<T>? parentNode, Node<T> insertNode)
         {
-           
             if (parentNode == null) parentNode = insertNode;
 
             if (parentNode.Data.CompareTo(insertNode.Data) > 0)
-                    parentNode.LeftChild = InsertRecursively(parentNode.LeftChild, insertNode);
-
+                parentNode.LeftChild = InsertRecursively(parentNode.LeftChild, insertNode);
             else if (parentNode.Data.CompareTo(insertNode.Data) < 0)
-                    parentNode.RightChild = InsertRecursively(parentNode.RightChild, insertNode);
-            
+                parentNode.RightChild = InsertRecursively(parentNode.RightChild, insertNode);
 
             return parentNode;
         }
