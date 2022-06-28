@@ -39,7 +39,6 @@ using System.Xml.Linq;
             // If found a non empty node, if value > data, go right. if value < data, go left.
 
             Node<T>? insertNode = new(value);
-            // Basfall?
             if (Root == null) Root = insertNode;
 
             Root = InsertRecursively(Root, insertNode);
@@ -47,23 +46,18 @@ using System.Xml.Linq;
 
         }
 
-
-        public Node<T> InsertRecursively(Node<T> parentNode, Node<T> insertNode)
+        public Node<T> InsertRecursively(Node<T>? parentNode, Node<T> insertNode)
         {
-            if (insertNode.Data.CompareTo(parentNode.Data) > 0)
-            {
-                if (parentNode.LeftChild == null)
-                    parentNode.LeftChild = insertNode;
-                else
-                    return InsertRecursively(parentNode.LeftChild, insertNode);
-            }
-            else
-            {
-                if (parentNode.RightChild == null)
-                    parentNode.RightChild = insertNode;
-                else
-                    return InsertRecursively(parentNode.RightChild, insertNode);
-            }
+           
+            if (parentNode == null) parentNode = insertNode;
+
+            if (parentNode.Data.CompareTo(insertNode.Data) > 0)
+                    parentNode.LeftChild = InsertRecursively(parentNode.LeftChild, insertNode);
+
+            else if (parentNode.Data.CompareTo(insertNode.Data) < 0)
+                    parentNode.RightChild = InsertRecursively(parentNode.RightChild, insertNode);
+            
+
             return parentNode;
         }
 
