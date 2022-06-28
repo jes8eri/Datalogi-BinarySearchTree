@@ -25,7 +25,7 @@
 		{
 			int left = (LeftChild == null) ? 0 : LeftChild.GetBalance() + 1;
 			int right = (RightChild == null) ? 0 : RightChild.GetBalance() + 1;
-			return right - left;
+			return Math.Abs(right - left);
 		}
 	}
 }
