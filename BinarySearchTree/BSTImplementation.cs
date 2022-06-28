@@ -2,13 +2,19 @@
 {
     using System;
     using DataStructures;
-
+    using Helpers;
     public static class BSTImplementation
     {
         /// <summary>
         /// Runs this instance.
         /// </summary>
         public static void Run()
+        {
+            DisplayHelper.SetColours();
+            StartBSTConsole();
+        }
+
+        private static void StartBSTConsole()
         {
             var bst = new BinarySearchTree<int>();
             var randomArray = PopulateRandomArray();
@@ -63,7 +69,7 @@
 
         private static void CheckIfContainsRandNumbers(BinarySearchTree<int> bst, int[] array)
         {
-            Console.WriteLine("\nDo the following random numbers exist in the BinarySearchTree?");
+            Console.WriteLine("\nDoes any of the following random numbers exist in the BinarySearchTree?");
             for (int i = 0; i < array.Length; i++)
             {
                 Console.WriteLine($"#{array[i]} - " + (bst.Exists(array[i]) ? "Yes" : "No"));
