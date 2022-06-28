@@ -24,9 +24,16 @@
         public bool Exists(T value)
         {
             // If root.data is != value, check next left node value, if left node value > value, go right
-            throw new NotImplementedException();
+            return ExistsRecursively(Root, value);
         }
 
+        private bool ExistsRecursively(Node<T>? node, T value)
+        {
+            if (node == null) return false;
+            if (value.CompareTo(node.Data) == 0) return true;
+
+            return ExistsRecursively(node.LeftChild, value) || ExistsRecursively(node.RightChild, value);
+        }
         /// <summary>
         /// Calls the recursive method for inserting a value into the BinarySearchTree.
         /// </summary>
@@ -62,7 +69,9 @@
         }
 
         /// <summary>
-        /// Code from lejonmanen - https://gist.github.com/lejonmanen/0580091a3ff824fcce537fe5523e4ce8
+        /// Prints all the nodes in the BinarySearchTree
+        /// <para/> Code from lejonmanen - https://gist.github.com/lejonmanen/0580091a3ff824fcce537fe5523e4ce8
+        /// -Edited slightly to remove IntelliSense messages.
         /// </summary>
         public void Print()
         {
