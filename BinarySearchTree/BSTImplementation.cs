@@ -15,8 +15,8 @@
         {
             var bst = new BinarySearchTree<int>();
             var randomArray = PopulateRandomArray();
-            int[] bstInsertValues = { 100, 50, 51, 75, 14, 7, 8, 17, 101 };
-
+            int[] bstInsertValues = { 100, 50, 51, 51, 75, 14, 7, 8, 17, 101 };
+            // Switch bstInsertValues to randomArray for randomly inserted values.
             PopulateBSTFromArr(bst, bstInsertValues);
 
             PrintBinarySearchTree(bst);
@@ -73,23 +73,25 @@
         private static void CheckIfContainsRandNumbers(BinarySearchTree<int> bst, int[] array)
         {
             Array.Sort(array);
-            Console.WriteLine("\nDoes any of the following random numbers exist in the BinarySearchTree?");
+            Console.WriteLine("\nDo any of the following random numbers exist in the BinarySearchTree?");
             for (int i = 0; i < array.Length; i++)
             {
-                Console.WriteLine($"#{array[i]} - " + (bst.Exists(array[i]) ? "Yes" : "No"));
+                if (bst.Exists(array[i]))
+                    DisplayHelper.WriteLineColour($"[{array[i]} - Yes]", ConsoleColor.White, Console.BackgroundColor);
+                else
+                    DisplayHelper.WriteLineColour($"[{array[i]} - No]", ConsoleColor.Gray, Console.BackgroundColor);
             }
         }
 
         private static void AskIfRedrawRandomNumbers()
         {
             Console.WriteLine("\nPress [1] for new random numbers. Any other key to exit.");
-            ConsoleKeyInfo input = Console.ReadKey(true);
+            var input = Console.ReadKey(true);
             if (input.KeyChar == '1')
             {
                 Console.Clear();
                 StartBSTConsole();
             }
-   
         }
     }
 }
