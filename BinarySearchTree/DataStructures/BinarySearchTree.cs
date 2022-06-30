@@ -51,7 +51,7 @@
             Node<T>? insertNode = new(value);
 
             if (Root == null) Root = insertNode;
-                Root = InsertRecursively(Root, insertNode);
+            Root = InsertRecursively(Root, insertNode);
         }
 
         /// <summary>
