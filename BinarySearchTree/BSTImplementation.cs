@@ -16,7 +16,7 @@
             var bst = new BinarySearchTree<int>();
             var randomArray = PopulateRandomArray();
             //int[] bstInsertValues = { 100, 50, 51, 51, 75, 14, 7, 8, 17, 101 };
-            int[] bstInsertValues = { 15, 8, 32, 4, 10, 10, 10, 25, 40, 9, 11 };
+            int[] bstInsertValues = { 15, 8, 32, 4, 10, 25, 40, 9, 11 };
             // Switch bstInsertValues to randomArray for randomly inserted values.
             PopulateBSTFromArr(bst, bstInsertValues);
 
