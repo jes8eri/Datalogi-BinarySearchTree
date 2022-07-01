@@ -38,6 +38,8 @@ Worst case är även här om trädet är obalanserat, exempelvis en rak linje ne
 Rymdskomplexitet för det binära sökträdet borde ju huvudsakligen bestå av antalet noder i trädet, vilket blir O(n).  
 
 Reflektion:  
-När det gäller tidskomplexiteten så tror jag tror att detta binära sökträdet ligger inom ramarna för vad som är normalt för ett binärt sökträd, men det hade absolut blivit bättre av att kunna bli balanserat.    
+När det gäller tidskomplexiteten så tror jag tror att detta binära sökträd ligger inom ramarna för vad som är normalt för ett binärt sökträd, men det hade absolut blivit bättre av att kunna bli balanserat.    
 Det binära sökträdet hade blivit mer effektivt om det var självbalanserat eller om det hade funnits en metod för att balansera trädet, så att skillnad i höjd mellan vänster/höger inte är större än ett.  
-Just nu så beror tidskomplexiteten för de flesta metoder på vilka värden som manuellt skickas in i trädet, och det är ju mindre genomtänkt.
+Då hade trädet aldrig hamnat i en situation där worst case när det gäller tidskomplexitet blir O(n).  
+Just nu så beror tidskomplexiteten för de flesta metoder på vilka värden som manuellt skickas in i trädet, och det är ju mindre genomtänkt.  
+Så beroende på vilka värden som skickas in i trädet och hur det är manuellt balanserat, så är tidskomplexiteten antingen O(n) eller i bästa fall O(log n).  
